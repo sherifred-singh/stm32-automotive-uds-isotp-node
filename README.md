@@ -1,7 +1,7 @@
-# 🚗 Automotive UDS (ISO 14229) & ISO-TP (ISO 15765-2) Diagnostic ECU Node
+﻿# ðŸš— Automotive UDS (ISO 14229) & ISO-TP (ISO 15765-2) Diagnostic ECU Node
 ### *Production-Grade Bare-Metal Diagnostic Stack on STM32F446RE (ARM Cortex-M4 @ 180 MHz)*
 
-[![C/C++ CI Test Suite](https://img.shields.io/badge/CI%20Build-Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/Sherifred123/stm32-automotive-uds-isotp-node/actions)
+[![C/C++ CI Test Suite](https://img.shields.io/badge/CI%20Build-Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/sherifred-singh/stm32-automotive-uds-isotp-node/actions)
 [![Language](https://img.shields.io/badge/Language-Embedded%20C%20(C99)-00599C?style=for-the-badge&logo=c&logoColor=white)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![Target Architecture](https://img.shields.io/badge/Target-STM32F446RE%20%2F%20Cortex--M4-032347?style=for-the-badge&logo=stmicroelectronics&logoColor=white)](https://www.st.com)
 [![Protocol](https://img.shields.io/badge/Protocol-ISO%2014229--1%20%7C%20ISO%2015765--2-orange?style=for-the-badge)](https://en.wikipedia.org/wiki/Unified_Diagnostic_Services)
@@ -12,7 +12,7 @@
 
 ---
 
-## 📌 System Architecture
+## ðŸ“Œ System Architecture
 
 <p align="center">
   <img src="docs/architecture.svg" alt="Automotive UDS & ISO-TP Architecture Diagram" width="100%">
@@ -20,7 +20,7 @@
 
 ---
 
-## 📑 Table of Contents
+## ðŸ“‘ Table of Contents
 
 - [1. Executive Summary & Problem Statement](#1-executive-summary--problem-statement)
 - [2. Protocol Stack Layers](#2-protocol-stack-layers)
@@ -50,18 +50,18 @@ This repository provides an **uncompromised, production-ready implementation** o
 ## 2. Protocol Stack Layers
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│                      APPLICATION LAYER (ISO 14229-1)                   │
-│   UDS Diagnostic Server: Sessions, SecurityAccess, DIDs, DTCs, Routines│
-├────────────────────────────────────────────────────────────────────────┤
-│                       NETWORK LAYER (ISO 15765-2)                      │
-│   DoCAN Transport: Single Frame (SF), First Frame (FF),                │
-│   Flow Control (FC: CTS, BS=8, STmin=10ms), Consecutive Frame (CF)     │
-├────────────────────────────────────────────────────────────────────────┤
-│                     DATA LINK & SILICON (ISO 11898-1)                  │
-│   STM32 bxCAN1 Peripheral: 500 kbps @ 45 MHz APB1, 83.3% Sample Point, │
-│   32-bit Identifier Mask Filtering (Bank 0: 0x7E0, Bank 1: 0x7DF)      │
-└────────────────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                      APPLICATION LAYER (ISO 14229-1)                   â”‚
+â”‚   UDS Diagnostic Server: Sessions, SecurityAccess, DIDs, DTCs, Routinesâ”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚                       NETWORK LAYER (ISO 15765-2)                      â”‚
+â”‚   DoCAN Transport: Single Frame (SF), First Frame (FF),                â”‚
+â”‚   Flow Control (FC: CTS, BS=8, STmin=10ms), Consecutive Frame (CF)     â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚                     DATA LINK & SILICON (ISO 11898-1)                  â”‚
+â”‚   STM32 bxCAN1 Peripheral: 500 kbps @ 45 MHz APB1, 83.3% Sample Point, â”‚
+â”‚   32-bit Identifier Mask Filtering (Bank 0: 0x7E0, Bank 1: 0x7DF)      â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ### Key Engineering Attributes:
@@ -94,9 +94,9 @@ This repository provides an **uncompromised, production-ready implementation** o
 | `0xF190` | **VIN (Vehicle Identification Number)** | 17 Bytes | **Yes (ISO-TP)** | ASCII: `"1HGCR2F83HA000001"` |
 | `0xF187` | **ECU Spare Part Number** | 10 Bytes | **Yes (ISO-TP)** | ASCII: `"STM-446-ECU"` |
 | `0xF189` | **ECU Software Version** | 4 Bytes | No (Single Frame) | Binary: `Major.Minor.Patch.Build` (v1.2.0.42) |
-| `0x0100` | **Live Battery Pack Telemetry** | 6 Bytes | No (Single Frame) | Voltage (0.1V), Current (0.1A), SOC (%), Max Temp (°C) |
+| `0x0100` | **Live Battery Pack Telemetry** | 6 Bytes | No (Single Frame) | Voltage (0.1V), Current (0.1A), SOC (%), Max Temp (Â°C) |
 | `0x0105` | **Speed Governor Speed Limit** | 1 Byte | No (Single Frame) | Unsigned Integer (km/h) [Writable in Unlocked state] |
-| `0x0200` | **MCU Hardware Diagnostics** | 5 Bytes | No (Single Frame) | Core Temp (°C), VREF (mV), CAN Bus Error Counters |
+| `0x0200` | **MCU Hardware Diagnostics** | 5 Bytes | No (Single Frame) | Core Temp (Â°C), VREF (mV), CAN Bus Error Counters |
 
 ---
 
@@ -169,7 +169,7 @@ When connecting the NUCLEO-F446RE board to a physical CAN transceiver (e.g., MCP
 
 ## 8. Automated Verification & Test Results
 
-### 🧪 Unity C Unit Test Suite (15/15 Passing)
+### ðŸ§ª Unity C Unit Test Suite (15/15 Passing)
 ```text
 ------------------------------------------------------------
    UNITY UNIT TEST EXECUTION: Automotive UDS & ISO-TP Stack
@@ -196,7 +196,7 @@ When connecting the NUCLEO-F446RE board to a physical CAN transceiver (e.g., MCP
 ============================================================
 ```
 
-### 🐍 Python Automated HIL Client Output (`tools/uds_tester.py`)
+### ðŸ Python Automated HIL Client Output (`tools/uds_tester.py`)
 ```text
 ====================================================================
   AUTOMOTIVE UDS & ISO-TP HIL TEST HARNESS (NUCLEO-F446RE)
@@ -208,7 +208,7 @@ When connecting the NUCLEO-F446RE board to a physical CAN transceiver (e.g., MCP
 [TEST 03] ReadDataByIdentifier: Software Version (DID 0xF189) ... PASSED (0.00 ms)
 [TEST 04] ReadDataByIdentifier: Multi-Frame VIN 17-Char ASCII (DID 0xF190) ... PASSED (0.00 ms)
 [TEST 05] ReadDataByIdentifier: Live BMS Telemetry (DID 0x0100) ... 
-      -> Telemetry Decoded: Voltage=51.2V, SOC=88%, Temp=34°C ... PASSED (0.00 ms)
+      -> Telemetry Decoded: Voltage=51.2V, SOC=88%, Temp=34Â°C ... PASSED (0.00 ms)
 [TEST 06] Negative Response Check: Non-Existent DID 0x9999 (Expect NRC 0x31) ... PASSED (0.00 ms)
 [TEST 07] SecurityAccess Level 1: Request Seed (0x27 0x01) ... 
       -> Received Seed: 0x3B81A72F ... PASSED (0.00 ms)
@@ -233,7 +233,7 @@ When connecting the NUCLEO-F446RE board to a physical CAN transceiver (e.g., MCP
 ### 1. Build & Run Desktop Simulation
 ```bash
 # Clone the repository
-git clone https://github.com/Sherifred123/stm32-automotive-uds-isotp-node.git
+git clone https://github.com/sherifred-singh/stm32-automotive-uds-isotp-node.git
 cd stm32-automotive-uds-isotp-node
 
 # Compile and run host self-test
@@ -261,7 +261,7 @@ make arm
 ## 10. Architecture Design Decisions & Safety Rationale
 
 ### 10.1 Multi-Frame Network Layer Protocol (ISO 15765-2 vs. Raw CAN)
-CAN 2.0B data link frames are restricted to 8-byte payloads. Production diagnostic procedures—such as Vehicle Identification Number (VIN) retrieval (17 bytes), Diagnostic Trouble Code (DTC) snapshot transfers, and In-Application Programming (IAP) binary streaming—exceed 8 bytes. This implementation encapsulates ISO 15765-2 to provide deterministic transport-layer segmentation, multi-frame reassembly (up to 4,095 bytes), flow control negotiation (`BlockSize` and `STmin`), sequence counter checking, and error timeouts (`N_Cr`, `N_Bs`).
+CAN 2.0B data link frames are restricted to 8-byte payloads. Production diagnostic proceduresâ€”such as Vehicle Identification Number (VIN) retrieval (17 bytes), Diagnostic Trouble Code (DTC) snapshot transfers, and In-Application Programming (IAP) binary streamingâ€”exceed 8 bytes. This implementation encapsulates ISO 15765-2 to provide deterministic transport-layer segmentation, multi-frame reassembly (up to 4,095 bytes), flow control negotiation (`BlockSize` and `STmin`), sequence counter checking, and error timeouts (`N_Cr`, `N_Bs`).
 
 ### 10.2 Communication Loss & Tester Dropout Protection (S3 Server Timer)
 To prevent vehicles from remaining in elevated or safety-critical diagnostic states (e.g., Extended or Programming sessions) following a diagnostic tool disconnection or PC crash, the server enforces an autonomous **S3 Server Inactivity Timer (`5000 ms`)**. If cyclic `TesterPresent` (`SID 0x3E`) frames cease for more than 5 seconds, the state machine automatically reverts to the Default Diagnostic Session (`0x01`) and revokes all active Security Access privileges.
@@ -271,7 +271,8 @@ In strict compliance with automotive functional safety requirements (ISO 26262),
 
 ---
 
-## 📄 License
+## ðŸ“„ License
 
 This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.  
 Designed and engineered by **Sherifred Singh**.
+
