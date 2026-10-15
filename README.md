@@ -1,4 +1,4 @@
-﻿# ðŸš— Automotive UDS (ISO 14229) & ISO-TP (ISO 15765-2) Diagnostic ECU Node
+# ðŸš— Automotive UDS (ISO 14229) & ISO-TP (ISO 15765-2) Diagnostic ECU Node
 ### *Production-Grade Bare-Metal Diagnostic Stack on STM32F446RE (ARM Cortex-M4 @ 180 MHz)*
 
 [![C/C++ CI Test Suite](https://img.shields.io/badge/CI%20Build-Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/sherifred-singh/stm32-automotive-uds-isotp-node/actions)
@@ -268,6 +268,9 @@ To prevent vehicles from remaining in elevated or safety-critical diagnostic sta
 
 ### 10.3 Dynamic Memory Elimination (MISRA-C:2012 Rule 21.3)
 In strict compliance with automotive functional safety requirements (ISO 26262), heap allocation (`malloc`, `free`, `realloc`) is eliminated to guarantee zero runtime fragmentation risk and deterministic memory bounds. All ISO-TP reception and transmission buffers are statically fixed (`ISOTP_BUF_SIZE = 512 bytes`). Payloads exceeding this ceiling trigger an immediate Flow Control frame with `FlowStatus = Overflow (0x02)`, cleanly aborting the transaction without memory corruption.
+
+### 10.4 In-Depth Specification & DID Memory Map
+For the comprehensive Data Identifier layout, Session matrices, and Security Access (Service `0x27`) parameters, see the [ISO 14229-1 UDS DID & Security Specification](docs/UDS_DID_SPECIFICATION.md).
 
 ---
 
